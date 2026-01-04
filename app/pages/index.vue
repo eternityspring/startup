@@ -31,16 +31,16 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
           <div class="text-center max-w-4xl mx-auto">
              <div class="inline-block mb-6">
                 <span class="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-purple-500/30 text-purple-700 dark:text-purple-300 text-sm font-medium backdrop-blur-sm">
-                  🚀 独立开发者线索平台
+                  🚀 独立开发者初创启动台
                 </span>
              </div>
 
              <h1 class="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-purple-700 to-cyan-700 dark:from-white dark:via-purple-200 dark:to-cyan-200 bg-clip-text text-transparent leading-tight">
-               发现成功的<br />独立产品线索
+               发现点子，轻松构建 <br>快速上线!
              </h1>
 
              <p class="text-xl text-gray-600 dark:text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-               探索真实的独立开发者产品数据，包括收入、增长渠道、技术栈等深度线索
+               从经过市场验证，高可信度的蓝海情报中获取点子，配合初创SaaS模板，跳过 80% 的基础搭建坑，直接进入核心业务竞争试错。
              </p>
              
              <!-- Filter Tags -->
@@ -131,7 +131,7 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
 
           <div class="grid md:grid-cols-3 gap-8">
             <div class="glass-card p-8 group hover:scale-105 transition-all duration-300">
-              <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+              <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
                 <Icon name="lucide:dollar-sign" class="w-6 h-6 text-white" />
               </div>
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">线索产品数据</h3>
@@ -139,7 +139,7 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
             </div>
 
             <div class="glass-card p-8 group hover:scale-105 transition-all duration-300">
-              <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-emerald-500 rounded-lg flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+              <div class="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
                 <Icon name="lucide:trending-up" class="w-6 h-6 text-white" />
               </div>
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">增长渠道分析</h3>
@@ -147,7 +147,7 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
             </div>
 
             <div class="glass-card p-8 group hover:scale-105 transition-all duration-300">
-              <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-purple-500 rounded-lg flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+              <div class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
                 <Icon name="lucide:code-2" class="w-6 h-6 text-white" />
               </div>
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">技术栈解析</h3>

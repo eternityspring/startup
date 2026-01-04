@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NuxtLayout class="min-h-screen bg-white">
+    <NuxtLayout class="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <NuxtPage />
     </NuxtLayout>
     <div v-if="!isReady" class="fixed inset-0 bg-white z-50">

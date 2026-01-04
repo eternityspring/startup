@@ -7,11 +7,13 @@
       <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
         <!-- Brand -->
         <div class="col-span-1 md:col-span-2">
-          <div class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-gray-100">
-             <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white">
-                <span class="text-sm font-bold">IS</span>
+          <div class="flex items-center gap-2">
+            <NuxtLink to="/" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-gray-100">
+              <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white dark:bg-white dark:text-black">
+                <span class="text-sm font-bold">S</span>
               </div>
-            <span>Startup</span>
+              <span>Startup</span>
+            </NuxtLink>
           </div>
           <p class="mt-4 max-w-sm text-sm text-gray-600 dark:text-gray-400">
             通过数据驱动的洞察，帮助独立开发者构建更好的产品。

@@ -1,47 +1,265 @@
-<script setup lang="ts">
-definePageMeta({
-  layout: 'blank'
-})
-</script>
-
 <template>
-  <div class="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">注册新账户</h2>
+  <div class="min-h-screen flex">
+    <!-- Left side - Branding -->
+    <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 p-12 flex-col justify-between">
+      <div class="flex items-center gap-2">
+        <NuxtLink to="/" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white dark:bg-white dark:text-black">
+            <span class="text-sm font-bold">S</span>
+          </div>
+          <span>Startup</span>
+        </NuxtLink>
+      </div>
+      <div>
+        <h2 class="text-white text-4xl font-bold mb-6">加入我们</h2>
+        <p class="text-emerald-100 text-lg leading-relaxed">
+          创建账户即可享受完整功能，开启您的精彩体验。
+        </p>
+      </div>
+      <div class="flex gap-4">
+        <div class="w-2 h-2 rounded-full bg-white/30"></div>
+        <div class="w-2 h-2 rounded-full bg-white/30"></div>
+        <div class="w-2 h-2 rounded-full bg-white"></div>
+      </div>
     </div>
 
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" method="POST">
-        <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200">邮箱地址</label>
-          <div class="mt-2">
-            <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-gray-900 dark:text-white dark:ring-gray-700">
+    <!-- Right side - Register Form -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gray-50">
+      <div class="w-full max-w-md">
+        <div class="text-center mb-10">
+          <h1 class="text-3xl font-bold text-gray-900 mb-2">创建账户</h1>
+          <p class="text-gray-500">填写以下信息完成注册</p>
+        </div>
+
+        <form @submit.prevent="handleRegister" class="space-y-5">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1.5">
+              姓名
+            </label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </span>
+              <input
+                  id="name"
+                  v-model="name"
+                  type="text"
+                  required
+                  class="w-full pl-12 pr-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder:text-gray-400"
+                  placeholder="您的姓名"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">
+              邮箱地址
+            </label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </span>
+              <input
+                  id="email"
+                  v-model="email"
+                  type="email"
+                  required
+                  class="w-full pl-12 pr-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder:text-gray-400"
+                  placeholder="name@example.com"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-1.5">
+              密码
+            </label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </span>
+              <input
+                  id="password"
+                  v-model="password"
+                  type="password"
+                  required
+                  minlength="6"
+                  class="w-full pl-12 pr-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder:text-gray-400"
+                  placeholder="至少 6 个字符"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1.5">
+              确认密码
+            </label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </span>
+              <input
+                  id="confirmPassword"
+                  v-model="confirmPassword"
+                  type="password"
+                  required
+                  class="w-full pl-12 pr-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder:text-gray-400"
+                  placeholder="再次输入密码"
+              />
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input
+                id="terms"
+                v-model="agreeTerms"
+                type="checkbox"
+                required
+                class="mt-1 w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+            />
+            <label for="terms" class="text-sm text-gray-600">
+              我已阅读并同意
+              <a href="#" class="text-emerald-600 hover:underline">服务条款</a>
+              和
+              <a href="#" class="text-emerald-600 hover:underline">隐私政策</a>
+            </label>
+          </div>
+
+          <div v-if="error" class="p-4 bg-red-50 border border-red-100 rounded-xl flex items-center gap-3">
+            <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="text-sm text-red-600">{{ error }}</p>
+          </div>
+
+          <div v-if="success" class="p-4 bg-green-50 border border-green-100 rounded-xl flex items-center gap-3">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="text-sm text-green-600">{{ success }}</p>
+          </div>
+
+          <button
+              type="submit"
+              :disabled="loading"
+              class="w-full py-3.5 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-600/25"
+          >
+            <span v-if="loading" class="flex items-center justify-center gap-2">
+              <svg class="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              注册中...
+            </span>
+            <span v-else>创建账户</span>
+          </button>
+        </form>
+
+        <div class="mt-8">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-200"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-4 bg-gray-50 text-gray-500">或者</span>
+            </div>
+          </div>
+
+          <div class="mt-6 grid gap-3">
+            <button class="flex items-center justify-center gap-2 py-3 px-4 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
+              <svg class="w-5 h-5" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              <span class="text-sm font-medium text-gray-700">Google</span>
+            </button>
           </div>
         </div>
 
-        <div>
-          <label for="password" class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200">密码</label>
-           <div class="mt-2">
-            <input id="password" name="password" type="password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-gray-900 dark:text-white dark:ring-gray-700">
-          </div>
-        </div>
+        <p class="mt-8 text-center text-gray-500">
+          已有账户？
+          <NuxtLink to="/login" class="text-emerald-600 hover:text-emerald-700 font-semibold">
+            立即登录
+          </NuxtLink>
+        </p>
 
-         <div>
-          <label for="confirm-password" class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200">确认密码</label>
-           <div class="mt-2">
-            <input id="confirm-password" name="confirm-password" type="password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-gray-900 dark:text-white dark:ring-gray-700">
-          </div>
-        </div>
-
-        <div>
-           <a href="/public" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">注册</a>
-        </div>
-      </form>
-
-      <p class="mt-10 text-center text-sm text-gray-500">
-        已有账户?
-        <NuxtLink to="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">立即登录</NuxtLink>
-      </p>
+        <NuxtLink to="/" class="mt-6 flex items-center justify-center gap-2 text-gray-400 hover:text-gray-600 text-sm transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          返回首页
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const supabase = useSupabaseClient()
+
+const name = ref('')
+const email = ref('')
+const password = ref('')
+const confirmPassword = ref('')
+const agreeTerms = ref(false)
+const loading = ref(false)
+const error = ref('')
+const success = ref('')
+
+definePageMeta({
+  layout: 'blank'
+})
+async function handleRegister() {
+  error.value = ''
+  success.value = ''
+
+  if (password.value !== confirmPassword.value) {
+    error.value = '两次输入的密码不一致'
+    return
+  }
+
+  if (password.value.length < 6) {
+    error.value = '密码长度至少为 6 个字符'
+    return
+  }
+
+  loading.value = true
+
+  try {
+    const { error: authError } = await supabase.auth.signUp({
+      email: email.value,
+      password: password.value,
+      options: {
+        data: {
+          name: name.value,
+        },
+      },
+    })
+
+    if (authError) {
+      error.value = authError.message
+    } else {
+      success.value = '注册成功！请检查您的邮箱完成验证。'
+      name.value = ''
+      email.value = ''
+      password.value = ''
+      confirmPassword.value = ''
+      agreeTerms.value = false
+    }
+  } catch (e) {
+    error.value = '注册失败，请稍后重试'
+  } finally {
+    loading.value = false
+  }
+}
+</script>

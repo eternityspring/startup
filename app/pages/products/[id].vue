@@ -28,7 +28,7 @@ const getStatusColor = (status: string) => {
 </script>
 
 <template>
-  <div>
+  <div class="h-[calc(100vh-381px)]">
     <main v-if="product" class="container mx-auto px-4 py-8 lg:px-8 lg:py-12">
       <!-- Breadcrumb -->
       <nav class="flex mb-8 text-sm text-gray-500 dark:text-gray-400">
@@ -48,7 +48,7 @@ const getStatusColor = (status: string) => {
                         <div class="flex items-center justify-between mb-2">
                              <h1 class="text-3xl font-bold text-gray-900 dark:text-white">{{ product.name }}</h1>
                              <a :href="product.source_url" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition-colors">
-                                访问网站
+                                访问产品
                                 <Icon name="lucide:external-link" class="w-4 h-4" />
                              </a>
                         </div>
