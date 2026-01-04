@@ -1,124 +1,79 @@
-<template>
-  <NuxtLink 
-    :to="`/products/${product.id}`"
-    class="product-card glass-card p-6 block group hover:scale-[1.02] transition-all duration-300"
-  >
-    <!-- Header -->
-    <div class="flex items-start gap-4 mb-4">
-      <img 
-        :src="product.logo_url" 
-        :alt="product.name"
-        class="w-16 h-16 rounded-xl shadow-lg flex-shrink-0"
-      />
-      
-      <div class="flex-1 min-w-0">
-        <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors truncate">
-          {{ product.name }}
-        </h3>
-        <p class="text-slate-400 text-sm line-clamp-2">
-          {{ product.description_zh }}
-        </p>
-      </div>
-    </div>
-
-    <!-- Revenue Badge -->
-    <div class="mb-4">
-      <RevenueBadge :revenue="product.revenue_range" :confidence="product.revenue_confidence" />
-    </div>
-
-    <!-- Growth Channels -->
-    <div class="mb-4">
-      <div class="flex flex-wrap gap-2">
-        <span 
-          v-for="channel in product.growth_channels.slice(0, 3)" 
-          :key="channel"
-          class="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-slate-300"
-        >
-          {{ getChannelLabel(channel) }}
-        </span>
-        <span 
-          v-if="product.growth_channels.length > 3"
-          class="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-slate-400"
-        >
-          +{{ product.growth_channels.length - 3 }}
-        </span>
-      </div>
-    </div>
-
-    <!-- Tech Stack -->
-    <div v-if="product.tech_stack && product.tech_stack.length > 0" class="mb-4">
-      <div class="flex flex-wrap gap-2">
-        <span 
-          v-for="tech in product.tech_stack.slice(0, 3)" 
-          :key="tech"
-          class="px-2 py-1 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20 rounded text-xs text-purple-300 font-mono"
-        >
-          {{ tech }}
-        </span>
-        <span 
-          v-if="product.tech_stack.length > 3"
-          class="px-2 py-1 bg-purple-500/10 border border-purple-500/20 rounded text-xs text-purple-400"
-        >
-          +{{ product.tech_stack.length - 3 }}
-        </span>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="flex items-center justify-between pt-4 border-t border-white/10">
-      <div class="flex items-center gap-2">
-        <StatusBadge :status="product.status" size="sm" />
-      </div>
-      
-      <div class="flex items-center gap-2 text-slate-400 text-xs">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        {{ product.launched_at || '未知' }}
-      </div>
-    </div>
-
-    <!-- Hover Arrow -->
-    <div class="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-      <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
-    </div>
-  </NuxtLink>
-</template>
-
 <script setup lang="ts">
-import type { Product, GrowthChannel } from '~/types/product';
-import { GROWTH_CHANNEL_LABELS } from '~/types/product';
+import type { Product } from '~/types/product'
 
-interface Props {
-  product: Product;
+const props = defineProps<{
+  product: Product
+}>()
+
+const formatRevenue = (range: string) => {
+  if (range === 'unknown') return 'Revenue Unknown'
+  return `${range} ARR`
 }
 
-defineProps<Props>();
-
-const getChannelLabel = (channel: GrowthChannel) => GROWTH_CHANNEL_LABELS[channel].zh;
+const getStatusColor = (status: Product['status']) => {
+  switch (status) {
+    case 'active': return 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+    case 'stagnant': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
+    case 'sold': return 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+    case 'shutdown': return 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+    default: return 'bg-gray-100 text-gray-700'
+  }
+}
 </script>
 
-<style scoped>
-.product-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-}
+<template>
+  <div class="group relative flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950">
+    <!-- Header: Logo & Name -->
+    <div class="mb-4 flex items-start justify-between">
+      <div class="flex items-center gap-4">
+        <div class="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg border border-gray-100 bg-gray-50 p-1 dark:border-gray-800 dark:bg-gray-900">
+          <img :src="product.logo_url" :alt="product.name" class="h-full w-full object-contain" />
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <NuxtLink :to="`/products/${product.id}`" class="hover:underline focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true" />
+              {{ product.name }}
+            </NuxtLink>
+          </h3>
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <span :class="['inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium', getStatusColor(product.status)]">
+              {{ product.status }}
+            </span>
+            <span class="text-xs">•</span>
+            <span class="text-xs capitalize">{{ product.product_type[0]?.replace('_', ' ') }}</span>
+          </div>
+        </div>
+      </div>
+      <a :href="product.source_url" target="_blank" class="text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300">
+        <Icon name="lucide:external-link" class="h-5 w-5" />
+      </a>
+    </div>
 
-.product-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(139, 92, 246, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.2);
-}
+    <!-- Description -->
+    <p class="mb-4 text-sm text-gray-600 line-clamp-2 dark:text-gray-300">
+      {{ product.description_zh || product.description_en }}
+    </p>
 
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-</style>
+    <!-- Metrics -->
+    <div class="mb-4 grid grid-cols-2 gap-4 border-y border-gray-100 py-4 text-sm dark:border-gray-800">
+      <div class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+        <Icon name="lucide:dollar-sign" class="h-4 w-4 text-gray-400" />
+        <span>{{ formatRevenue(product.revenue_range) }}</span>
+      </div>
+      <div class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+        <Icon name="lucide:trending-up" class="h-4 w-4 text-gray-400" />
+        <span class="capitalize">{{ product.growth_channels[0] || 'Organic' }}</span>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="mt-auto flex flex-wrap gap-2">
+      <span v-for="tag in product.tags.slice(0, 3)" :key="tag" 
+        class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 dark:bg-gray-800 dark:text-gray-300 dark:ring-gray-700">
+        #{{ tag }}
+      </span>
+      <span v-if="product.tags.length > 3" class="text-xs text-gray-400">+{{ product.tags.length - 3 }}</span>
+    </div>
+  </div>
+</template>

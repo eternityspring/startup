@@ -1,10 +1,12 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
-    <AppNav />
-    <slot />
-    <AppFooter />
+  <div class="min-h-screen bg-white">
+    <NuxtPage />
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+
+const route = useRoute();
+
 </script>
