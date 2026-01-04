@@ -65,7 +65,7 @@
 
     <!-- CTA -->
     <section class="container mx-auto px-6 py-16 text-center">
-      <NuxtLink to="/" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors inline-block">
+      <NuxtLink to="/public" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors inline-block">
         返回首页
       </NuxtLink>
     </section>

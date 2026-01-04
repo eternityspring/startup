@@ -222,7 +222,7 @@
 </template>
 
 <script setup lang="ts">
-import { mockProducts } from '~/data/mockProducts';
+import { mockProducts } from '~/app/data/mockProducts';
 
 const featuredProducts = mockProducts.slice(0, 6);
 

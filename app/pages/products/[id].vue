@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { mockProducts } from '~/data/mockProducts'
-import AppHeader from '~/components/AppHeader.vue'
-import AppFooter from '~/components/AppFooter.vue'
 
 const route = useRoute()
 const productId = route.params.id as string
@@ -30,13 +28,11 @@ const getStatusColor = (status: string) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors">
-    <AppHeader />
-
+  <div>
     <main v-if="product" class="container mx-auto px-4 py-8 lg:px-8 lg:py-12">
       <!-- Breadcrumb -->
       <nav class="flex mb-8 text-sm text-gray-500 dark:text-gray-400">
-        <a href="/" class="hover:text-indigo-600 dark:hover:text-indigo-400">首页</a>
+        <a href="/public" class="hover:text-indigo-600 dark:hover:text-indigo-400">首页</a>
         <span class="mx-2">/</span>
         <span class="text-gray-900 dark:text-gray-200">线索详情</span>
       </nav>
@@ -163,9 +159,7 @@ const getStatusColor = (status: string) => {
     
     <div v-else class="container mx-auto px-4 py-20 text-center">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">未找到线索</h2>
-        <a href="/" class="text-indigo-600 hover:text-indigo-500 mt-4 inline-block">返回首页</a>
+        <a href="/public" class="text-indigo-600 hover:text-indigo-500 mt-4 inline-block">返回首页</a>
     </div>
-
-    <AppFooter />
   </div>
 </template>

@@ -15,7 +15,7 @@ const toggleTheme = () => {
     <div class="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
       <!-- Logo -->
       <div class="flex items-center gap-2">
-        <a href="/" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-gray-100">
+        <a href="/public" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-gray-100">
           <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white">
             <span class="text-sm font-bold">S</span>
           </div>

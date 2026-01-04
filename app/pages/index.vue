@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { mockProducts } from '~/data/mockProducts'
 import ProductCard from '~/components/ProductCard.vue'
-import AppHeader from '~/components/AppHeader.vue'
-import AppFooter from '~/components/AppFooter.vue'
 import { ref, computed } from 'vue'
 
 const selectedType = ref('all')
@@ -18,8 +16,7 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-slate-950 dark:via-purple-950 dark:to-slate-900">
-    <AppHeader />
+  <div>
     
     <main>
       <div class="relative overflow-hidden">
@@ -162,7 +159,6 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
 
     </main>
 
-    <AppFooter />
   </div>
 </template>
 
