@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxtjs/supabase',
     '@nuxt/icon',
+    '@nuxtjs/sanity',
   ],
   supabase: {
     redirectOptions: {
@@ -18,7 +19,9 @@ export default defineNuxtConfig({
       exclude: ['/', '/register', '/about'],
     },
   },
-  spaLoadingTemplate: true,
+  // loading config
+  // ssr: false,  
+  // spaLoadingTemplate: true,
   app: {
     head: {
       link: [
@@ -47,5 +50,11 @@ export default defineNuxtConfig({
         }
       ]
     }
+  },
+  sanity: {
+    projectId: '你的项目ID',
+    dataset: 'production', // 默认通常是 production
+    useCdn: true, // 开启后响应更快且更省流量（SSR推荐）
+    apiVersion: '2026-01-01' // 建议使用当前日期
   },
 })

@@ -134,8 +134,8 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
               <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
                 <Icon name="lucide:dollar-sign" class="w-6 h-6 text-white" />
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">真实收入数据</h3>
-              <p class="text-gray-600 dark:text-slate-400">获取真实的产品收入数据和可信度评级，了解市场真实情况</p>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">线索产品数据</h3>
+              <p class="text-gray-600 dark:text-slate-400">获取具有可信度评级的产品营收数据，了解市场真实情况</p>
             </div>
 
             <div class="glass-card p-8 group hover:scale-105 transition-all duration-300">
@@ -150,7 +150,7 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
               <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-purple-500 rounded-lg flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
                 <Icon name="lucide:code-2" class="w-6 h-6 text-white" />
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">技术栈透明</h3>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">技术栈解析</h3>
               <p class="text-gray-600 dark:text-slate-400">了解成功产品背后的技术选型，为您的项目提供参考</p>
             </div>
           </div>

@@ -46,7 +46,7 @@ export const mockProducts: Product[] = [
         revenue_confidence: 5,
         growth_channels: ['social', 'producthunt', 'community'],
         primary_channel: 'social',
-        tech_stack: ['Next.js', 'Stripe', 'Prisma', 'PostgreSQL'],
+        tech_stack: ['Next', 'Stripe', 'Prisma', 'PostgreSQL'],
         status: 'active',
     },
     {
@@ -69,7 +69,7 @@ export const mockProducts: Product[] = [
         revenue_confidence: 3,
         growth_channels: ['seo', 'ads', 'social'],
         primary_channel: 'seo',
-        tech_stack: ['React', 'Python', 'OpenAI', 'FastAPI'],
+        tech_stack: ['React', 'Python'],
         status: 'active',
     },
     {
@@ -90,9 +90,9 @@ export const mockProducts: Product[] = [
         product_type: ['template', 'mobile_app'],
         revenue_range: '$1k-$5k',
         revenue_confidence: 5,
-        growth_channels: ['marketplace', 'social', 'community'],
+        growth_channels: ['social', 'community'],
         primary_channel: 'other',
-        tech_stack: ['React Native', 'TypeScript', 'Expo'],
+        tech_stack: ['React', 'TypeScript'],
         status: 'active',
     },
     {
@@ -113,9 +113,9 @@ export const mockProducts: Product[] = [
         product_type: ['saas', 'web_app'],
         revenue_range: '<$1k',
         revenue_confidence: 4,
-        growth_channels: ['ads', 'cold_email', 'social'],
+        growth_channels: ['ads', 'email', 'social'],
         primary_channel: 'ads',
-        tech_stack: ['Vue', 'Node.js', 'MongoDB', 'OpenAI'],
+        tech_stack: ['Vue', 'NodeJS', 'MongoDB'],
         status: 'active',
     },
     {

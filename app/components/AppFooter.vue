@@ -11,7 +11,7 @@
              <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white">
                 <span class="text-sm font-bold">IS</span>
               </div>
-            <span>IndieSaaS</span>
+            <span>Startup</span>
           </div>
           <p class="mt-4 max-w-sm text-sm text-gray-600 dark:text-gray-400">
             通过数据驱动的洞察，帮助独立开发者构建更好的产品。
@@ -47,7 +47,7 @@
       </div>
       
       <div class="mt-12 border-t border-gray-100 pt-8 text-center text-sm text-gray-500 dark:border-gray-800">
-        &copy; {{ new Date().getFullYear() }} IndieSaaS. 保留所有权利。
+        &copy; {{ new Date().getFullYear() }} Startup. 保留所有权利。
       </div>
     </div>
   </footer>

@@ -1,12 +1,37 @@
 <template>
-  <div class="min-h-screen bg-white">
-    <NuxtPage />
+  <div>
+    <NuxtLayout class="min-h-screen bg-white">
+      <NuxtPage />
+    </NuxtLayout>
+    <div v-if="!isReady" class="fixed inset-0 bg-white z-50">
+      <div id="loading-screen" class="loading-overlay">
+        <div class="loader">正在加载中...</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+const nuxtApp = useNuxtApp()
+const isReady = ref(false)
 
-const route = useRoute();
-
+nuxtApp.hook('app:suspense:resolve', () => {
+  isReady.value = true
+})
 </script>
+
+<style>
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading-overlay.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+</style>
