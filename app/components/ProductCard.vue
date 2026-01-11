@@ -31,7 +31,7 @@ const getStatusColor = (status: Product['status']) => {
         </div>
         <div>
           <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-            <NuxtLink :to="`/products/${product.id}`" class="hover:underline focus:outline-none">
+            <NuxtLink :to="`/products/${product.id}`" class="focus:outline-none">
               <span class="absolute inset-0" aria-hidden="true" />
               {{ product.name }}
             </NuxtLink>

@@ -12,6 +12,10 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxtjs/sanity',
   ],
+  shadcn: {
+    prefix: '',
+    componentDir: '@/components/ui'
+  },
   supabase: {
     redirectOptions: {
       login: '/login',
