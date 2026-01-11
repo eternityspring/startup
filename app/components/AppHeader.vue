@@ -57,7 +57,7 @@ const setLanguage = (lang: typeof languages[0]) => {
         <NuxtLink to="/products" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">线索</NuxtLink>
         <NuxtLink to="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">价格</NuxtLink>
         <NuxtLink to="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">博客</NuxtLink>
-        <NuxtLink to="/content/blog/note" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">笔记</NuxtLink>
+        <NuxtLink to="/blog/note" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">笔记</NuxtLink>
       </nav>
 
       <!-- Actions -->

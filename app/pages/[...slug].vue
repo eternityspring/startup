@@ -16,9 +16,11 @@ useSeoMeta({
 </script>
 
 <template>
-  <div v-if="blog" class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <h1>{{blog.title}}</h1>
-    <ContentRenderer :value="blog" />
+  <div v-if="blog" class="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-12">{{blog.title}}</h1>
+    <div class="blog-content">
+      <ContentRenderer :value="blog" />
+    </div>
   </div>
   <Empty v-else class="min-h-[calc(100vh-381px)]">
     <EmptyHeader>

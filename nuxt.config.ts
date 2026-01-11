@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   srcDir: 'app',
   devtools: { enabled: true },
+  css: ['~/assets/css/blog.css'],
   modules: [
     '@nuxt/image',
     '@nuxt/content',
