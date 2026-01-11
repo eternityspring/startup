@@ -55,8 +55,8 @@ const setLanguage = (lang: typeof languages[0]) => {
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600 dark:text-gray-300">
         <NuxtLink to="/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">首页</NuxtLink>
         <NuxtLink to="/products" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">线索</NuxtLink>
-        <NuxtLink to="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">价格</NuxtLink>
-        <NuxtLink to="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">博客</NuxtLink>
+        <NuxtLink to="/pricing" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">价格</NuxtLink>
+        <NuxtLink to="/blog" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">博客</NuxtLink>
         <NuxtLink to="/blog/note" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">笔记</NuxtLink>
       </nav>
 

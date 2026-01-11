@@ -1,13 +1,18 @@
+import tailwindcss from '@tailwindcss/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   srcDir: 'app',
   devtools: { enabled: true },
-  css: ['~/assets/css/blog.css'],
+  css: [
+    '~/assets/css/global.css',
+    '~/assets/css/main.css',
+    '~/assets/css/blog.css',
+  ],
   modules: [
     '@nuxt/image',
     '@nuxt/content',
-    '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
     '@nuxtjs/supabase',
     '@nuxt/icon',
@@ -15,14 +20,7 @@ export default defineNuxtConfig({
   ],
   shadcn: {
     prefix: '',
-    componentDir: '@/components/ui'
-  },
-  supabase: {
-    redirectOptions: {
-      login: '/login',
-      callback: '/confirm',
-      exclude: ['/', '/register', '/about'],
-    },
+    componentDir: '~/components/ui'
   },
   // loading config
   // ssr: false,  
@@ -56,8 +54,13 @@ export default defineNuxtConfig({
       ]
     }
   },
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
   sanity: {
-    projectId: '你的项目ID',
+    projectId: 'projectId',
     dataset: 'production', // 默认通常是 production
     useCdn: true, // 开启后响应更快且更省流量（SSR推荐）
     apiVersion: '2026-01-01' // 建议使用当前日期

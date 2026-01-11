@@ -10,19 +10,24 @@ useSeoMeta({
 </script>
 
 <template>
-  <Empty class="page-container">
+  <div v-if="blog" class="page-container">
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-12">{{ blog.title }}</h1>
+    <div class="blog-content">
+      <ContentRenderer :value="blog" />
+    </div>
+  </div>
+  <Empty v-else class="page-container">
     <EmptyHeader>
       <EmptyTitle>404 - Not Found</EmptyTitle>
       <EmptyDescription>
-        The page you're looking for doesn't exist. Try searching for what you
-        need below.
+        Article no found.
       </EmptyDescription>
     </EmptyHeader>
     <EmptyContent>
       <EmptyDescription>
-        <nuxt-link to="/">
-          返回首页
-        </nuxt-link>
+        <NuxtLink to="/blog" class="text-primary-500 hover:underline">
+          Return to blog
+        </NuxtLink>
       </EmptyDescription>
     </EmptyContent>
   </Empty>

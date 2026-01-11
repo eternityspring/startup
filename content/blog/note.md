@@ -7,6 +7,8 @@ description: 记录开发过程中的奇思妙想
 
 参考块：https://tailark.com/hero-section
 
+npx shadcn-vue@latest add button
+
 你看到的这种在前缀中使用冒号的写法，遵循的是 **Conventional Commits（约定式提交）** 规范。
 
 它是目前前端和开源社区（如 Angular, Vue, React）最流行的代码提交标准。其核心目的是让提交历史**可读**、**可搜索**，并支持**自动化生成 Changelog（版本更新日志）**。
