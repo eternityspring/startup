@@ -89,7 +89,7 @@ const priceList = [
             </ul>
 
             <!-- CTA Button -->
-            <Button :variant="tier.highlighted ? 'default' : 'outline'" class="w-full">
+            <Button :variant="tier.highlighted ? 'default' : 'outline'" class="w-full cursor-pointer">
               Get Started
             </Button>
           </Card>

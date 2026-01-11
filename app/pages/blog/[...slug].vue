@@ -11,8 +11,8 @@ useSeoMeta({
 
 <template>
   <div v-if="blog" class="page-container">
-    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-12">{{ blog.title }}</h1>
-    <div class="blog-content">
+    <div class="prose lg:prose-xl max-w-[70%] mx-auto">
+      <h1>{{ blog.title }}</h1>
       <ContentRenderer :value="blog" />
     </div>
   </div>
