@@ -51,7 +51,7 @@ const priceList = [
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
         <!-- Header -->
         <div class="text-center space-y-4 mb-8 md:mb-12">
-          <h2 class="text-3xl font-bold tracking-tight md:text-5xl">Simple, transparent pricing</h2>
+          <h2 class="text-3xl font-bold tracking-tight md:text-5xl">Subscription Plans</h2>
           <p class="text-muted-foreground md:text-lg">
             Choose the perfect plan for your needs. Always know what you'll pay.
           </p>
@@ -60,14 +60,14 @@ const priceList = [
         <!-- Pricing Cards -->
         <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
           <Card v-for="tier in priceList" :key="tier.name" :class="[
-          'relative p-6 lg:p-8',
+          'relative p-6 lg:p-8 flex flex-col',
           tier.highlighted ? 'border-primary shadow-lg scale-[1.02]' : ''
         ]">
             <!-- Popular Badge -->
             <div v-if="tier.highlighted" class="absolute -top-4 left-1/2 -translate-x-1/2">
-            <span class="bg-primary text-primary-foreground text-sm font-medium px-3 py-1 rounded-full">
-              Most Popular
-            </span>
+              <span class="bg-primary text-primary-foreground text-sm font-medium px-3 py-1 rounded-full">
+                Most Popular
+              </span>
             </div>
 
             <!-- Tier Header -->
@@ -81,7 +81,7 @@ const priceList = [
             </div>
 
             <!-- Features List -->
-            <ul class="space-y-2 mb-6">
+            <ul class="space-y-2 mb-6 flex-1">
               <li v-for="feature in tier.features" :key="feature" class="flex items-center text-sm">
                 <CheckIcon class="mr-2 h-4 w-4 text-primary" />
                 {{ feature }}
