@@ -22,7 +22,7 @@ const getStatusColor = (status: Product['status']) => {
 </script>
 
 <template>
-  <div class="group relative flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950">
+  <Card class="group relative flex flex-col p-6 transition-all hover:shadow-md">
     <!-- Header: Logo & Name -->
     <div class="mb-4 flex items-start justify-between">
       <div class="flex items-center gap-4">
@@ -75,5 +75,5 @@ const getStatusColor = (status: Product['status']) => {
       </span>
       <span v-if="product.tags.length > 3" class="text-xs text-gray-400">+{{ product.tags.length - 3 }}</span>
     </div>
-  </div>
+  </Card>
 </template>

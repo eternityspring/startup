@@ -46,58 +46,56 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
 
              <!-- CTA Button -->
              <div class="mb-12">
-               <NuxtLink to="/pricing" class="group inline-flex items-center justify-center px-8 py-3 text-lg font-serif text-white transition-all duration-300 bg-red-900 rounded-lg hover:bg-red-800 shadow-lg hover:shadow-red-900/30 transform hover:-translate-y-0.5">
-                 立即开始
-                 <Icon name="lucide:arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-               </NuxtLink>
+               <Button as-child size="lg" class="group bg-red-900 hover:bg-red-800 text-white shadow-lg hover:shadow-red-900/30 transform hover:-translate-y-0.5">
+                 <NuxtLink to="/pricing" class="inline-flex items-center">
+                   立即开始
+                   <Icon name="lucide:arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                 </NuxtLink>
+               </Button>
              </div>
              
              <!-- Filter Tags -->
              <div class="flex flex-wrap justify-center gap-3 mb-16">
-                <button 
+                <Button 
                   v-for="type in productTypes" 
                   :key="type"
                   @click="selectedType = type"
-                  :class="[
-                    'px-6 py-2 rounded-lg text-sm transition-all duration-300 font-serif',
-                    selectedType === type 
-                      ? 'bg-gray-900 text-white shadow-md dark:bg-gray-100 dark:text-gray-900' 
-                      : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-900 dark:bg-white/5 dark:border-white/10 dark:text-stone-400 dark:hover:text-stone-200'
-                  ]"
+                  :variant="selectedType === type ? 'default' : 'outline'"
+                  class="font-serif"
                 >
                   {{ type === 'all' ? '全部' : type.replace('_', ' ') }}
-                </button>
+                </Button>
              </div>
 
              <!-- Stats -->
                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
-                <div class="glass-card p-6 text-center group hover:-translate-y-1 transition-transform duration-300">
+                <Card class="p-6 text-center group hover:-translate-y-1 transition-transform duration-300">
                   <div class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-2">
                     500+
                   </div>
                   <div class="text-gray-500 dark:text-stone-500 text-sm font-light">产品收录</div>
-                </div>
+                </Card>
 
-                <div class="glass-card p-6 text-center group hover:-translate-y-1 transition-transform duration-300">
+                <Card class="p-6 text-center group hover:-translate-y-1 transition-transform duration-300">
                   <div class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-2">
                     $2M+
                   </div>
                   <div class="text-gray-500 dark:text-stone-500 text-sm font-light">月收入总和</div>
-                </div>
+                </Card>
 
-                <div class="glass-card p-6 text-center group hover:-translate-y-1 transition-transform duration-300">
+                <Card class="p-6 text-center group hover:-translate-y-1 transition-transform duration-300">
                   <div class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-2">
                     50+
                   </div>
                   <div class="text-gray-500 dark:text-stone-500 text-sm font-light">技术栈</div>
-                </div>
+                </Card>
 
-                <div class="glass-card p-6 text-center group hover:-translate-y-1 transition-transform duration-300">
+                <Card class="p-6 text-center group hover:-translate-y-1 transition-transform duration-300">
                    <div class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-2">
                     100%
                   </div>
                   <div class="text-gray-500 dark:text-stone-500 text-sm font-light">真实数据</div>
-                </div>
+                </Card>
               </div>
           </div>
         </div>
@@ -131,7 +129,6 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
       </section>
       
       <!-- Why Choose Us -->
-      <!-- Why Choose Us -->
       <section class="py-24 relative">
         <div class="container mx-auto px-6">
           <div class="text-center mb-16">
@@ -140,29 +137,29 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
           </div>
 
           <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass-card p-8 group hover:-translate-y-1 transition-all duration-300">
+            <Card class="p-8 group hover:-translate-y-1 transition-all duration-300">
               <div class="w-12 h-12 bg-gray-900 dark:bg-white rounded-md flex items-center justify-center mb-6">
                 <Icon name="lucide:dollar-sign" class="w-6 h-6 text-white dark:text-gray-900" />
               </div>
               <h3 class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-3">线索产品数据</h3>
               <p class="text-gray-600 dark:text-stone-400 font-light">获取具有可信度评级的产品营收数据，了解市场真实情况</p>
-            </div>
+            </Card>
 
-            <div class="glass-card p-8 group hover:-translate-y-1 transition-all duration-300">
+            <Card class="p-8 group hover:-translate-y-1 transition-all duration-300">
               <div class="w-12 h-12 bg-red-800 rounded-md flex items-center justify-center mb-6">
                 <Icon name="lucide:trending-up" class="w-6 h-6 text-white" />
               </div>
               <h3 class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-3">增长渠道分析</h3>
               <p class="text-gray-600 dark:text-stone-400 font-light">深入了解成功产品的增长策略和主要获客渠道</p>
-            </div>
+            </Card>
 
-            <div class="glass-card p-8 group hover:-translate-y-1 transition-all duration-300">
+            <Card class="p-8 group hover:-translate-y-1 transition-all duration-300">
               <div class="w-12 h-12 bg-gray-900 dark:bg-white rounded-md flex items-center justify-center mb-6">
                 <Icon name="lucide:code-2" class="w-6 h-6 text-white dark:text-gray-900" />
               </div>
               <h3 class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-3">技术栈解析</h3>
               <p class="text-gray-600 dark:text-stone-400 font-light">了解成功产品背后的技术选型，为您的项目提供参考</p>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -173,28 +170,4 @@ const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app'
 </template>
 
 <style scoped>
-.glass-card {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 0.5rem; /* More boxy for ink style */
-  transition: all 0.3s ease;
-}
-
-.dark .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.glass-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-.dark .glass-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
-}
 </style>

@@ -65,13 +65,14 @@ const setLanguage = (lang: typeof languages[0]) => {
         
         <!-- Language Selector -->
         <div class="relative">
-          <button 
+          <Button 
             @click="toggleDropdown('language')"
-            class="flex items-center justify-center w-9 h-9 rounded-md text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
+            variant="ghost"
+            size="icon"
             title="Switch Language"
           >
             <Icon name="lucide:languages" class="h-5 w-5" />
-          </button>
+          </Button>
           
           <div v-if="activeDropdown === 'language'" class="absolute right-0 top-full mt-2 w-40 rounded-md border border-gray-200 bg-white p-1 shadow-lg dark:border-gray-800 dark:bg-gray-950">
             <button
@@ -88,13 +89,14 @@ const setLanguage = (lang: typeof languages[0]) => {
 
         <!-- Theme Toggle -->
         <div class="relative">
-          <button 
+          <Button 
             @click="toggleDropdown('theme')"
-            class="flex items-center justify-center w-9 h-9 rounded-md text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
+            variant="ghost"
+            size="icon"
             title="Toggle Theme"
           >
             <Icon :name="themeIcons[theme]" class="h-5 w-5" />
-          </button>
+          </Button>
           
           <div v-if="activeDropdown === 'theme'" class="absolute right-0 top-full mt-2 w-32 rounded-md border border-gray-200 bg-white p-1 shadow-lg dark:border-gray-800 dark:bg-gray-950">
             <button
@@ -112,15 +114,16 @@ const setLanguage = (lang: typeof languages[0]) => {
 
         <!-- User / Auth -->
         <div v-if="!isLoggedIn" class="flex items-center gap-2 pl-2 border-l border-gray-200 dark:border-gray-800">
-           <button 
+           <Button 
              @click="toggleDropdown('login-helper'); login()" 
-             class="hidden sm:inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800 transition-colors"
+             variant="ghost"
+             class="hidden sm:inline-flex"
            >
              登录
-           </button>
-           <NuxtLink to="/register" class="inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-colors shadow-sm">
-             注册
-           </NuxtLink>
+           </Button>
+           <Button as-child>
+             <NuxtLink to="/register">注册</NuxtLink>
+           </Button>
         </div>
 
         <div v-else class="relative pl-2 border-l border-gray-200 dark:border-gray-800">
@@ -136,20 +139,21 @@ const setLanguage = (lang: typeof languages[0]) => {
                <p class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ user?.name }}</p>
                <p class="text-xs text-gray-500 dark:text-gray-400">user@example.com</p>
              </div>
-             <button
+             <Button
                @click="logout(); activeDropdown = null"
-               class="mt-1 flex w-full items-center gap-2 rounded-sm px-3 py-2 text-sm text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/30"
+               variant="ghost"
+               class="mt-1 w-full justify-start text-red-600 hover:text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/30"
              >
-               <Icon name="lucide:log-out" class="h-4 w-4" />
-               <span>退出登录</span>
-             </button>
+               <Icon name="lucide:log-out" class="h-4 w-4 mr-2" />
+               退出登录
+             </Button>
            </div>
         </div>
 
         <!-- Mobile Menu Button (Placeholder) -->
-        <button class="md:hidden ml-2 rounded-md p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800">
+        <Button variant="ghost" size="icon" class="md:hidden">
           <Icon name="lucide:menu" class="h-5 w-5" />
-        </button>
+        </Button>
       </div>
     </div>
     
