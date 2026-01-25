@@ -181,7 +181,9 @@
 </template>
 
 <script setup lang="ts">
-const supabase = useSupabaseClient()
+import { authClient } from '~/lib/auth-client'
+
+const router = useRouter()
 
 const name = ref('')
 const email = ref('')
@@ -195,6 +197,7 @@ const success = ref('')
 definePageMeta({
   layout: 'blank'
 })
+
 async function handleRegister() {
   error.value = ''
   success.value = ''
@@ -212,30 +215,29 @@ async function handleRegister() {
   loading.value = true
 
   try {
-    const { error: authError } = await supabase.auth.signUp({
+    const { error: authError } = await authClient.signUp.email({
+      name: name.value,
       email: email.value,
       password: password.value,
-      options: {
-        data: {
-          name: name.value,
-        },
-      },
     })
 
     if (authError) {
-      error.value = authError.message
+      error.value = authError.message || '注册失败'
     } else {
-      success.value = '注册成功！请检查您的邮箱完成验证。'
-      name.value = ''
-      email.value = ''
-      password.value = ''
-      confirmPassword.value = ''
-      agreeTerms.value = false
+      success.value = '注册成功！'
+      // 注册成功后自动跳转到首页
+      router.push('/')
     }
   } catch (e) {
     error.value = '注册失败，请稍后重试'
   } finally {
     loading.value = false
   }
+}
+
+const signUpWithGoogle = async () => {
+  await authClient.signIn.social({
+    provider: 'google',
+  })
 }
 </script>

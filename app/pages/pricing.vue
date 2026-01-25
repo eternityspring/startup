@@ -47,7 +47,7 @@ const priceList = [
 
 <template>
   <div class="page-container">
-    <section class="relative w-full flex items-center bg-white py-8 md:py-16 lg:py-24">
+    <section class="relative w-full flex items-center py-8 md:py-16 lg:py-24">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
         <!-- Header -->
         <div class="text-center space-y-4 mb-8 md:mb-12">

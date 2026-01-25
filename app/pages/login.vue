@@ -128,7 +128,8 @@
 </template>
 
 <script setup lang="ts">
-const supabase = useSupabaseClient()
+import { authClient } from '~/lib/auth-client'
+
 const router = useRouter()
 
 const email = ref('')
@@ -145,13 +146,13 @@ async function handleLogin() {
   error.value = ''
 
   try {
-    const { error: authError } = await supabase.auth.signInWithPassword({
+    const { error: authError } = await authClient.signIn.email({
       email: email.value,
       password: password.value,
     })
 
     if (authError) {
-      error.value = authError.message
+      error.value = authError.message || '登录失败'
     } else {
       router.push('/')
     }
@@ -163,7 +164,7 @@ async function handleLogin() {
 }
 
 const signInWithGoogle = async () => {
-  await supabase.auth.signInWithOAuth({
+  await authClient.signIn.social({
     provider: 'google',
   })
 }
