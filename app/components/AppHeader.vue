@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { theme, setTheme } = useTheme()
-const { user, login, logout, isLoggedIn } = useUser()
+const { user, logout, isLoggedIn } = useUser()
 
 const activeDropdown = ref<string | null>(null)
 
@@ -115,11 +115,11 @@ const setLanguage = (lang: typeof languages[0]) => {
         <!-- User / Auth -->
         <div v-if="!isLoggedIn" class="flex items-center gap-2 pl-2 border-l border-gray-200 dark:border-gray-800">
            <Button 
-             @click="toggleDropdown('login-helper'); login()" 
+             as-child
              variant="ghost"
              class="hidden sm:inline-flex"
            >
-             登录
+             <NuxtLink to="/login">登录</NuxtLink>
            </Button>
            <Button as-child>
              <NuxtLink to="/register">注册</NuxtLink>
@@ -137,10 +137,10 @@ const setLanguage = (lang: typeof languages[0]) => {
           <div v-if="activeDropdown === 'user'" class="absolute right-0 top-full mt-2 w-48 rounded-md border border-gray-200 bg-white p-1 shadow-lg dark:border-gray-800 dark:bg-gray-950">
              <div class="px-3 py-2 border-b border-gray-100 dark:border-gray-800">
                <p class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ user?.name }}</p>
-               <p class="text-xs text-gray-500 dark:text-gray-400">user@example.com</p>
+               <p class="text-xs text-gray-500 dark:text-gray-400">{{ user?.email }}</p>
              </div>
              <Button
-               @click="logout(); activeDropdown = null"
+               @click="async () => { await logout(); activeDropdown = null }"
                variant="ghost"
                class="mt-1 w-full justify-start text-red-600 hover:text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/30"
              >

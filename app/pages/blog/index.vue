@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: blogs } = await useAsyncData('blog-list', () =>
+const { data: blogs } = await useAsyncData('list', () =>
   queryCollection('blog').all()
 )
 

@@ -1,37 +1,34 @@
-export type ProductType = 'saas' | 'chrome_extension' | 'mobile_app' | 'web_app' | 'template' | 'other';
-export type RevenueRange = 'unknown' | '<$1k' | '$1k-$5k' | '$5k-$10k' | '$10k-$50k' | '$50k+';
+export type ProductType = 'saas' | 'chromeExtension' | 'mobileApp' | 'webApp' | 'template' | 'other';
 export type GrowthChannel = 'seo' | 'social' | 'producthunt' | 'community' | 'ads' | 'content' | 'email' | 'other';
 export type TechStack = 'Vue' | 'React' | 'TypeScript' | 'NodeJS' | 'Redis' | 'MongoDB' | 'Nuxt' | 'Next' | 'Tailwind CSS' | 'Supabase' | 'Prisma' | 'PostgreSQL' | 'Firebase' | 'Node' | 'Python' | 'Go' | 'PHP' | 'Laravel' | 'Rails' | 'Stripe' | 'other';
-export type ProductStatus = 'active' | 'stagnant' | 'sold' | 'shutdown';
+export type ProductStatus = 'active' | 'stagnant' | 'shutdown';
 
 export interface Product {
     id: string;
     name: string;
-    description_en: string;
-    description_zh: string;
-    source_url: string;
-    story_en: string;
-    story_zh: string;
-    logo_url: string;
-    target_user_en: string;
-    target_user_zh: string;
-    notes_zh?: string;
-    notes_en?: string;
+    description: string;        // 多语言
+    sourceUrl: string;
+    story: string;         // 多语言
+    logoUrl: string;
+    targetUser: string;  // 受众群体 
+    notes: any;
 
     // Dates
-    launched_at?: string; // ISO Date string or YYYY-MM
-    created_at: Date;
-    updated_at: Date;
-
+    launchedAt?: string; // ISO Date string or YYYY-MM
+    createdAt: Date;
+    updatedAt: Date;
+    createdBy: string;  // 创建者 关联其他表的用户id
     // Tags
     tags: string[];
 
     // Related Fields
-    product_type: ProductType[];
-    revenue_range: RevenueRange;
-    revenue_confidence: 1 | 2 | 3 | 4 | 5;
-    growth_channels: GrowthChannel[];
-    primary_channel?: GrowthChannel | 'other';
-    tech_stack?: TechStack[];
+    productType: ProductType[];
+    revenue: number;
+    mrr: number;
+    arr: number;
+    revenueConfidence: 1 | 2 | 3 | 4 | 5;
+    growthChannels: GrowthChannel[];
+    primaryChannel?: GrowthChannel | 'other';
+    techStack?: TechStack[];
     status: ProductStatus;
 }

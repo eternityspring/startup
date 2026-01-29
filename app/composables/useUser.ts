@@ -1,23 +1,38 @@
+import { authClient } from '~/lib/auth-client'
+
 export const useUser = () => {
-    const user = useState('user', () => null as { name: string; avatar: string } | null)
+    const sessionState = authClient.useSession()
+
+    const user = computed(() => {
+        const sessionData = sessionState.value?.data
+        if (sessionData?.user) {
+            return {
+                name: sessionData.user.name || 'User',
+                email: sessionData.user.email,
+                avatar: sessionData.user.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${sessionData.user.email}`
+            }
+        }
+        return null
+    })
+
+    const isLoggedIn = computed(() => !!sessionState.value?.data?.user)
+    const isLoading = computed(() => sessionState.value?.isPending ?? false)
 
     const login = () => {
-        user.value = {
-            name: 'Wesley',
-            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Wesley'
-        }
+        // 跳转到登录页面
+        navigateTo('/login')
     }
 
-    const logout = () => {
-        user.value = null
+    const logout = async () => {
+        await authClient.signOut()
     }
-
-    const isLoggedIn = computed(() => !!user.value)
 
     return {
         user,
         login,
         logout,
-        isLoggedIn
+        isLoggedIn,
+        isLoading,
+        session: sessionState
     }
 }

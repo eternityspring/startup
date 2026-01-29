@@ -27,7 +27,7 @@ const getStatusColor = (status: Product['status']) => {
     <div class="mb-4 flex items-start justify-between">
       <div class="flex items-center gap-4">
         <div class="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg border border-gray-100 bg-gray-50 p-1 dark:border-gray-800 dark:bg-gray-900">
-          <img :src="product.logo_url" :alt="product.name" class="h-full w-full object-contain" />
+          <img :src="product.logoUrl" :alt="product.name" class="h-full w-full object-contain" />
         </div>
         <div>
           <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
@@ -41,29 +41,29 @@ const getStatusColor = (status: Product['status']) => {
               {{ product.status }}
             </span>
             <span class="text-xs">•</span>
-            <span class="text-xs capitalize">{{ product.product_type[0]?.replace('_', ' ') }}</span>
+            <span class="text-xs capitalize">{{ product.productType[0] }}</span>
           </div>
         </div>
       </div>
-      <a :href="product.source_url" target="_blank" class="text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300">
+      <a :href="product.sourceUrl" target="_blank" class="text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300">
         <Icon name="lucide:external-link" class="h-5 w-5" />
       </a>
     </div>
 
     <!-- Description -->
     <p class="mb-4 text-sm text-gray-600 line-clamp-2 dark:text-gray-300">
-      {{ product.description_zh || product.description_en }}
+      {{ product.descriptionZh || product.descriptionEn }}
     </p>
 
     <!-- Metrics -->
     <div class="mb-4 grid grid-cols-2 gap-4 border-y border-gray-100 py-4 text-sm dark:border-gray-800">
       <div class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
         <Icon name="lucide:dollar-sign" class="h-4 w-4 text-gray-400" />
-        <span>{{ formatRevenue(product.revenue_range) }}</span>
+        <span>{{ formatRevenue(product.revenueRange) }}</span>
       </div>
       <div class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
         <Icon name="lucide:trending-up" class="h-4 w-4 text-gray-400" />
-        <span class="capitalize">{{ product.growth_channels[0] || 'Organic' }}</span>
+        <span class="capitalize">{{ product.growthChannels[0] || 'Organic' }}</span>
       </div>
     </div>
 

@@ -7,12 +7,12 @@ const selectedType = ref('all')
 
 const filteredProducts = computed(() => {
   return mockProducts.filter(product => {
-    const matchesType = selectedType.value === 'all' || product.product_type.includes(selectedType.value as any)
+    const matchesType = selectedType.value === 'all' || product.productType.includes(selectedType.value as any)
     return matchesType
   })
 })
 
-const productTypes = ['all', 'saas', 'chrome_extension', 'mobile_app', 'web_app', 'template']
+const productTypes = ['all', 'saas', 'chromeExtension', 'mobileApp', 'webApp', 'template']
 </script>
 
 <template>
